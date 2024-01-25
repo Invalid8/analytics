@@ -1,0 +1,49 @@
+.custom-scroll-bar {
+  --scroll-bar-color: var(--black);
+  --scroll-bar-color-sub: var(--m-white);
+  --scroll-bar-shadow: 0 0 2px 2px var(--black);
+  --scroll-bar-width: 10px;
+  --scroll-bar-width-min: 8px;
+  --scroll-thumb-width: 8px;
+  --scroll-thumb-width-min: 6px;
+  --scroll-bar-padding: 5px;
+  --scroll-bar-margin: 5px;
+  --scroll-bar-radius: 4px;
+  --sb-track-color: #eef;
+  --sb-thumb-color: #34caa5;
+  --sb-size: 5px;
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  padding-bottom: 10px;
+}
+
+.custom-scroll-bar.thin {
+  scrollbar-width: 0;
+}
+
+.custom-scroll-bar.thin::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.custom-scroll-bar::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+.custom-scroll-bar.main::-webkit-scrollbar {
+  background-color: var(--m-white);
+}
+
+.custom-scroll-bar::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 0;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+
+.custom-scroll-bar.main::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar-color);
+}
