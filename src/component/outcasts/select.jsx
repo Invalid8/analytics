@@ -16,8 +16,8 @@ const Select = ({ className, style, list }) => {
           <input
             className="select-box__input"
             type="radio"
-            id={0}
-            value={1}
+            id={list[0].id}
+            value={list[0].id}
             name="Ben"
             checked="checked"
             onChange={() => {}}
@@ -33,8 +33,8 @@ const Select = ({ className, style, list }) => {
               <input
                 className="select-box__input"
                 type="radio"
-                id={index}
-                value={index}
+                id={item.id}
+                value={item.id}
                 name="Ben"
               />
               <p className="select-box__input-text">{item.text}</p>
@@ -66,7 +66,7 @@ const Select = ({ className, style, list }) => {
             <li key={item.id ? item.id : index}>
               <label
                 className="select-box__option bg-[#fff] hover:dark:bg-[#171515] hover:dark:text-[#fff]"
-                htmlFor={index}
+                htmlFor={item.id}
                 aria-hidden="aria-hidden"
               >
                 {item.text}

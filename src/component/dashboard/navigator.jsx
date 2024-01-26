@@ -1,16 +1,25 @@
 /* eslint-disable react/prop-types */
 
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Iconic } from "./style";
 import { ThemeContext } from "../../context/ThemeContext";
 import styled from "styled-components";
 
 const Navigator = ({ tabOpen, setTab }) => {
   const { toggleTheme, theme } = useContext(ThemeContext);
+
+  const cVal = useRef(window.innerWidth < 840 ? "close" : "close-lg");
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      cVal.current = window.innerWidth < 840 ? "close" : "close-lg";
+    });
+  });
+
   return (
     <Tab
       className={`slip h-svh flex flex-col overflow-hidden dark:bg-[#171515] dark:text-[#fff] ${
-        !tabOpen && "close"
+        !tabOpen && cVal.current
       }`}
       style={{
         border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
@@ -503,9 +512,21 @@ const Navigator = ({ tabOpen, setTab }) => {
 };
 
 const Tab = styled.div`
-  &.close {
-    width: 0;
-    translate: 0;
+  @media (min-width: 541px) {
+    &.close-lg {
+      width: 0;
+      translate: 0;
+    }
+  }
+
+  @media (max-width: 540px) {
+    &.close {
+      width: 0;
+      translate: 0;
+
+      /* position: fixed;
+      left: 0; */
+    }
   }
 `;
 

@@ -1,8 +1,30 @@
-# React + Vite
+# Gega Pay Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is analytics dashboard for monitoring finiancial data and records, along side with transactions.
 
-Currently, two official plugins are available:
+#### Technologies:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. React JSX (Vite) [🔗](https://react.dev "React")
+   - Frontend components and layers
+2. Tailwind CSS [🔗](https://tailwindcss.com/ "Tailwind")
+   - Styling of components and layers
+3. ECharts [🔗](https://echarts.apache.org/ "ECharts")
+   - Graph
+
+-Live @ [Analytics](https://analytics-blond.vercel.app/ "Live Link")
+
+##### To run development:
+
+using npm
+
+```
+npm install
+npm run dev
+```
+
+using yarn
+
+```
+yarn add
+yarn run dev
+```

@@ -20,9 +20,9 @@ export default class ThemeContextProvider extends Component {
   };
 
   toggleTheme = (newThemeCode) => {
+    document.documentElement.className = newThemeCode;
     this.setState({ theme: newThemeCode });
     editSettings(db_theme_key, newThemeCode);
-    document.documentElement.className = newThemeCode;
   };
 
   render() {

@@ -11,7 +11,7 @@
   --scroll-bar-radius: 4px;
   --sb-track-color: #eef;
   --sb-thumb-color: #34caa5;
-  --sb-size: 5px;
+  --sb-size: 2px;
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   padding-bottom: 10px;
 }
@@ -37,6 +37,7 @@
 .custom-scroll-bar::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 0;
+  border-radius: var(--sb-size);
 }
 
 .custom-scroll-bar::-webkit-scrollbar-thumb {

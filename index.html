@@ -10,15 +10,16 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script>
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.className = 'dark'
-      } else {
+      console.log(localStorage.getItem("theme"))
+      if (localStorage.getItem("theme") === 'light') {
         document.documentElement.className = 'light'
+      } else {
+        document.documentElement.className = 'dark'
       }
     </script>
   </head>
 
-  <body>
+  <body class="overflow-hidden dark:bg-black">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -19,7 +19,7 @@ export default function Orders() {
         </button>
       </div>
       <div className="bud overflow-auto max-h-[400px] custom-scroll-bar w-full">
-        <div className="tale flex flex-col gap-[1.05rem] w-full">
+        <div className="tale flex flex-col gap-[1.05rem] w-fit">
           <Table className="h">
             <div className="name">Name</div>
             <div className="date">Date</div>
