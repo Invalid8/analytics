@@ -8,13 +8,20 @@ import styled from "styled-components";
 const Navigator = ({ tabOpen, setTab }) => {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
-  const cVal = useRef(window.innerWidth < 840 ? "close" : "close-lg");
+  const cVal = useRef(window.innerWidth < 540 ? "close" : "close-lg");
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      cVal.current = window.innerWidth < 840 ? "close" : "close-lg";
-    });
+    window.addEventListener("resize", resize);
+    return window.removeEventListener("resize", resize);
   });
+
+  const resize = () => {
+    cVal.current = window.innerWidth < 540 ? "close" : "close-lg";
+
+    if (window.innerWidth < 540) setTab(false);
+  };
+
+  window.addEventListener("resize", resize);
 
   return (
     <Tab
@@ -29,7 +36,9 @@ const Navigator = ({ tabOpen, setTab }) => {
         <div className="top flex flex-col items-center gap-[1.25rem]">
           <Iconic
             className="logo overflow-hidden"
-            onClick={() => setTab(!tabOpen)}
+            onClick={() => {
+              window.location.reload();
+            }}
           >
             <img src="/turbo.svg" className="w-[90%] object-cover" alt="..." />
           </Iconic>
@@ -49,7 +58,7 @@ const Navigator = ({ tabOpen, setTab }) => {
                 <path
                   opacity="0.4"
                   d="M18.6699 2H16.7699C14.5899 2 13.4399 3.15 13.4399 5.33V7.23C13.4399 9.41 14.5899 10.56 16.7699 10.56H18.6699C20.8499 10.56 21.9999 9.41 21.9999 7.23V5.33C21.9999 3.15 20.8499 2 18.6699 2Z"
-                  fill={theme == "dark" ? "rgb(66, 29, 228)" : "#0D062D"}
+                  fill={theme == "dark" ? "rgb(230, 230, 230)" : "#0D062D"}
                 />
                 <path
                   d="M18.6699 13.4301H16.7699C14.5899 13.4301 13.4399 14.5801 13.4399 16.7601V18.6601C13.4399 20.8401 14.5899 21.9901 16.7699 21.9901H18.6699C20.8499 21.9901 21.9999 20.8401 21.9999 18.6601V16.7601C21.9999 14.5801 20.8499 13.4301 18.6699 13.4301Z"
@@ -58,7 +67,7 @@ const Navigator = ({ tabOpen, setTab }) => {
                 <path
                   opacity="0.4"
                   d="M7.24 13.4301H5.34C3.15 13.4301 2 14.5801 2 16.7601V18.6601C2 20.8501 3.15 22.0001 5.33 22.0001H7.23C9.41 22.0001 10.56 20.8501 10.56 18.6701V16.7701C10.57 14.5801 9.42 13.4301 7.24 13.4301Z"
-                  fill={theme == "dark" ? "rgb(66, 29, 228)" : "#0D062D"}
+                  fill={theme == "dark" ? "rgb(230, 230, 230)" : "#0D062D"}
                 />
               </svg>
             </Iconic>

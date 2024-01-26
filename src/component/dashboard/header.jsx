@@ -4,7 +4,7 @@ import { Iconic, Sync } from "./style";
 import { ThemeContext } from "../../context/ThemeContext";
 
 // eslint-disable-next-line react/prop-types
-const Header = ({ tabOpen, setTab }) => {
+const Header = ({ tabOpen }) => {
   const [show, setShow] = useState(false);
   const [veil, setVeil] = useState(false);
   const { theme } = useContext(ThemeContext);
@@ -22,7 +22,9 @@ const Header = ({ tabOpen, setTab }) => {
         {!tabOpen && (
           <Iconic
             className="logo overflow-hidden"
-            onClick={() => setTab(!tabOpen)}
+            onClick={() => {
+              window.location.reload();
+            }}
           >
             <img src="/turbo.svg" className="w-[90%] object-cover" alt="..." />
           </Iconic>

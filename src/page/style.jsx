@@ -17,4 +17,12 @@ export const Dash = styled.div`
       grid-template-columns: 0 1fr;
     }
   }
+
+  & .tool-tip-btn {
+    left: 1rem;
+  }
+
+  &.opened .tool-tip-btn {
+    left: 5.5rem;
+  }
 `;

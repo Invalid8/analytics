@@ -84,7 +84,7 @@ const Sales = () => {
             type: "bar",
             barWidth: "60%",
             data: [
-              7500, 19000, 3000, 28000, 9000, 39000, 9000, 23000, 32000, 4900,
+              8500, 19000, 3000, 28000, 9000, 45000, 9000, 23000, 32000, 4900,
               30000, 25000,
             ],
             itemStyle: {
@@ -121,7 +121,7 @@ const Sales = () => {
         <div className="opt flex items-center gap-[0.625rem]">
           <span className="font-semibold">Sort by :</span>
           <div
-            className="option w-[6.5rem] bg-[#fff] dark:bg-[#1c1919]"
+            className="option w-[6rem] bg-[#fff] dark:bg-[#1c1919]"
             style={{
               borderRadius: "1.25rem",
               border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
@@ -158,7 +158,7 @@ const Sales = () => {
       </div>
       <div className="bud w-full h-full custom-scroll-bar overflow-auto">
         <div
-          className="main w-full h-full min-w-[360px] min-h-[300px]"
+          className="main w-full h-full min-w-[360px] min-h-[300px] max-h-[17rem]"
           id="chart"
           ref={chart}
         ></div>

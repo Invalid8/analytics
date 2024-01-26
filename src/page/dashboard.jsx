@@ -23,16 +23,14 @@ const Dashboard = () => {
 
   return (
     <Dash
-      className={`Main main-container grid grid-cols-2 grid-rows-1 full relative ${
-        !tabOpen && cVal.current
+      className={`Main main-container grid grid-cols-2 grid-rows-1 relative ${
+        !tabOpen ? cVal.current : "opened"
       }`}
     >
       <Navigator tabOpen={tabOpen} setTab={setTab} />
       <Main tabOpen={tabOpen} setTab={setTab} />
       <button
-        className={`tool-tip-btn w-[2.5rem] h-[2.5rem] bg-[#1e1d1d] text-[#fff] dark:bg-[#1d1c1c] dark:text-[#fff] absolute bottom-5 left-5 sm:left-[${
-          tabOpen ? "5.5rem" : "1rem"
-        }] rounded-full grid place-content-center`}
+        className={`tool-tip-btn w-[2.5rem] h-[2.5rem] bg-[#1e1d1d] text-[#fff] dark:bg-[#6f6e6e] dark:text-[#fff] absolute bottom-5 left-5 rounded-full grid place-content-center`}
         onClick={() => setTab(!tabOpen)}
       >
         {tabOpen ? <FaArrowLeft /> : <FaArrowRight />}
