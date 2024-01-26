@@ -116,7 +116,7 @@ const Sales = () => {
         border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
       }}
     >
-      <div className="title flex justify-between items-center gap-2 flex-wrap">
+      <div className="title flex justify-between items-center gap-2 flex-wrap w-full">
         <Title className="name font-semibold">Sales Trends</Title>
         <div className="opt flex items-center gap-[0.625rem]">
           <span className="font-semibold">Sort by :</span>
@@ -156,11 +156,13 @@ const Sales = () => {
           </div>
         </div>
       </div>
-      <div
-        className="main w-full h-full min-w-[360px] min-h-[300px] overflow-auto custom-scroll-bar"
-        id="chart"
-        ref={chart}
-      ></div>
+      <div className="bud w-full h-full custom-scroll-bar overflow-auto">
+        <div
+          className="main w-full h-full min-w-[360px] min-h-[300px]"
+          id="chart"
+          ref={chart}
+        ></div>
+      </div>
     </div>
   );
 };

@@ -1,34 +1,29 @@
+/* eslint-disable react/prop-types */
+
 import { useContext } from "react";
 import { Iconic } from "./style";
 import { ThemeContext } from "../../context/ThemeContext";
+import styled from "styled-components";
 
-const Navigator = () => {
+const Navigator = ({ tabOpen, setTab }) => {
   const { toggleTheme, theme } = useContext(ThemeContext);
   return (
-    <div
-      className="slip h-svh flex flex-col overflow-hidden dark:bg-[#171515] dark:text-[#fff]"
+    <Tab
+      className={`slip h-svh flex flex-col overflow-hidden dark:bg-[#171515] dark:text-[#fff] ${
+        !tabOpen && "close"
+      }`}
       style={{
         border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
       }}
     >
       <div className="tube flex flex-col justify-between items-center p-[1.25rem] bg-[#F7F8FA] dark:bg-[#171515] h-full overflow-y-auto overflow-x-hidden custom-scroll-bar gap-[2rem]">
         <div className="top flex flex-col items-center gap-[1.25rem]">
-          <div className="logo">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.95431 31.0457 0 20 0C8.95429 0 0 8.95431 0 20C0 31.0457 8.95429 40 20 40ZM26.2393 9.31684C26.543 8.23805 25.4961 7.60013 24.54 8.2813L11.1931 17.7896C10.1562 18.5283 10.3193 20 11.4381 20H14.9527V19.9728H21.8025L16.2212 21.9421L13.7607 30.6832C13.457 31.762 14.5038 32.3999 15.46 31.7187L28.8069 22.2105C29.8438 21.4718 29.6806 20 28.5619 20H23.2321L26.2393 9.31684Z"
-                fill="#34CAA5"
-              />
-            </svg>
-          </div>
+          <Iconic
+            className="logo overflow-hidden"
+            onClick={() => setTab(!tabOpen)}
+          >
+            <img src="/turbo.svg" className="w-[90%] object-cover" alt="..." />
+          </Iconic>
           <div className="others flex flex-col items-center gap-[1rem]">
             <Iconic className="category-btn" title="categories">
               <svg
@@ -381,7 +376,11 @@ const Navigator = () => {
           </div>
         </div>
         <div className="bottom flex flex-col items-center gap-[1.25rem]">
-          <Iconic className="expand-btn" title="expand">
+          <Iconic
+            className="expand-btn"
+            title="expand"
+            onClick={() => setTab(!tabOpen)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -499,8 +498,15 @@ const Navigator = () => {
         </div>
       </div>
       {/* <div className="extra w-full h-[5.5rem] max-md:h-0 bg-white dark:bg-[#171515]"></div> */}
-    </div>
+    </Tab>
   );
 };
+
+const Tab = styled.div`
+  &.close {
+    width: 0;
+    translate: 0;
+  }
+`;
 
 export default Navigator;

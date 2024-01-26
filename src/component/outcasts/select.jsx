@@ -55,7 +55,12 @@ const Select = ({ className, style, list }) => {
           />
         </svg>
       </div>
-      <ul className="select-box__list bg-[#fff] dark:bg-[#171515] dark:text-[#fff] rounded-sm">
+      <ul
+        className="select-box__list bg-[#fff] dark:bg-[#332e2e] dark:text-[#fff] rounded-sm"
+        style={{
+          border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
+        }}
+      >
         {list.map((item, index) => {
           return (
             <li key={item.id ? item.id : index}>
@@ -147,7 +152,7 @@ const List = styled.div`
     position: absolute;
     width: 100%;
     max-width: 100px;
-    border: 1px solid #e1dfdf;
+
     padding: 0;
     list-style: none;
     opacity: 0;
@@ -164,6 +169,7 @@ const List = styled.div`
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
 
     text-transform: capitalize;
+    z-index: 1000000;
   }
   .select-box__option {
     display: block;

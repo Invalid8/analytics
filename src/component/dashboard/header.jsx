@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import profile from "../../assets/profile1.jpeg";
-import { Sync } from "./style";
+import { Iconic, Sync } from "./style";
 import { ThemeContext } from "../../context/ThemeContext";
 
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({ tabOpen, setTab }) => {
   const [show, setShow] = useState(false);
+  const [veil, setVeil] = useState(false);
   const { theme } = useContext(ThemeContext);
+
+  const [doAdjSearch, setAdjSearch] = useState(false);
 
   return (
     <Sync
@@ -14,7 +18,15 @@ const Header = () => {
         borderBottom: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
       }}
     >
-      <div className="title">
+      <div className="title flex items-center gap-1">
+        {!tabOpen && (
+          <Iconic
+            className="logo overflow-hidden"
+            onClick={() => setTab(!tabOpen)}
+          >
+            <img src="/turbo.svg" className="w-[90%] object-cover" alt="..." />
+          </Iconic>
+        )}
         <h3
           style={{
             fontFamily: "Plus Jakarta Sans",
@@ -29,13 +41,20 @@ const Header = () => {
       </div>
       <div className="other flex items-center gap-[1.38rem] self-stretch">
         <div
-          className="search-box flex w-[21.85rem] max-w-[22rem] h-[3rem] pl-3 items-center gap-[0.5rem] overflow-hidden rounded-[1.5rem] bg-[var(--Neutral-White, #FFF)] dark:bg-[#1c1919]"
+          className={`search-box flex w-[21.85rem] max-w-[22rem] h-[3rem] pl-3 items-center gap-[0.5rem] overflow-hidden rounded-[1.5rem] bg-[#FFF)] dark:bg-[#1c1919] ${
+            doAdjSearch && "fuller"
+          }`}
           style={{
             flex: "1 0 0",
             border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
           }}
         >
-          <span>
+          <span
+            onClick={() => {
+              setAdjSearch(true);
+              setVeil(true);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -173,7 +192,13 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <button className="proof profile" onClick={() => setShow(!show)}>
+        <button
+          className="proof profile"
+          onClick={() => {
+            setShow(!show);
+            setVeil(true);
+          }}
+        >
           <div
             className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden"
             style={{
@@ -191,10 +216,14 @@ const Header = () => {
       <div
         className="veil fixed top-0 buttom-0 left-0 right-0 bg-[#0000003a] w-full h-full"
         style={{
-          zIndex: show ? "100" : "-1000",
-          opacity: show ? "1" : "0",
+          zIndex: veil ? "100" : "-1000",
+          opacity: veil ? "1" : "0",
         }}
-        onClick={() => setShow(!show)}
+        onClick={() => {
+          setShow(false);
+          setAdjSearch(false);
+          setVeil(false);
+        }}
       ></div>
     </Sync>
   );

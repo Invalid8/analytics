@@ -102,6 +102,37 @@ export const Sync = styled.div`
       min-width: 50px;
     }
   }
+
+  @media (max-width: 450px) {
+    & .search-box {
+      width: 100%;
+      max-width: 45px;
+      min-width: 45px;
+      max-height: 45px;
+      min-height: 45px;
+
+      overflow: hidden;
+    }
+
+    & .search-box.fuller {
+      position: fixed;
+      width: 200px;
+      height: 50px;
+      min-height: 50px;
+      min-width: 90%;
+      max-height: 260px;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      z-index: 10000;
+    }
+
+    & .search-box.fuller input {
+      background-color: (225, 223, 223) !important;
+    }
+  }
 `;
 
 export const Table = styled.div`
