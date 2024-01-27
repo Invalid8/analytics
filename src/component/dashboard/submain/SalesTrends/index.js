@@ -1,3 +1,4 @@
 import { sort } from "./data";
+import SHeader from "./header";
 
-export { sort };
+export { sort, SHeader };

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
 import { createContext } from "react";
-import { editSettings } from "../data/LocalStorage";
+import { createSettings, editSettings } from "../data/LocalStorage";
 
 export const ThemeContext = createContext();
 
@@ -14,13 +14,13 @@ export default class ThemeContextProvider extends Component {
 
   toggleTheme = (newThemeCode) => {
     document.documentElement.className = newThemeCode;
-    editSettings(db_theme_key, newThemeCode);
-    this.setState({ theme: newThemeCode });
+    this.setState({ theme: editSettings(db_theme_key, newThemeCode) });
   };
 
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
 
   render() {
+    if (!localStorage.getItem("theme")) createSettings(db_theme_key, "light");
     return (
       <ThemeContext.Provider
         value={{ ...this.state, toggleTheme: this.toggleTheme }}

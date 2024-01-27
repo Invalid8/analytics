@@ -26,7 +26,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
 
   return (
     <Tab
-      className={`slip h-svh flex flex-col overflow-hidden dark:bg-[#171515] dark:text-[#fff] relative ${
+      className={`slip h-svh flex flex-col ${theme === "dark" && "dark"} overflow-hidden dark:bg-[#171515] dark:text-[#fff] relative ${
         !tabOpen && cVal.current
       } ${full && "full-nav"}`}
       style={{
@@ -92,6 +92,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Categories</span>}
+              <span className="tab"></span>
             </Iconic>
             <Iconic className={`trend-btn ${full && "straight"}`} title="Trend">
               <svg
@@ -131,6 +132,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Trends</span>}
+              <span className="tab"></span>
             </Iconic>
             <Iconic
               className={`profile-btn ${full && "straight"}`}
@@ -173,6 +175,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Profile</span>}
+              <span className="tab"></span>
             </Iconic>
             <Iconic className={`box-btn ${full && "straight"}`} title="box">
               <svg
@@ -212,6 +215,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Box</span>}
+              <span className="tab"></span>
             </Iconic>
             <Iconic
               className={`discount-btn ${full && "straight"}`}
@@ -261,6 +265,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Discount</span>}
+              <span className="tab"></span>
             </Iconic>
             <Iconic className={`info-btn ${full && "straight"}`} title="info">
               <svg
@@ -293,6 +298,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
                 />
               </svg>
               {full && <span>Help</span>}
+              <span className="tab"></span>
             </Iconic>
             <ThemeBtn full={full} />
           </div>
@@ -375,6 +381,7 @@ const Navigator = ({ tabOpen, setTab, full, setFull }) => {
               />
             </svg>
             {full && <span>Settings</span>}
+            <span className="tab"></span>
           </Iconic>
           <Iconic className={`logout-btn ${full && "straight"}`} title="logout">
             <svg

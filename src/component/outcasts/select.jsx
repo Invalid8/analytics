@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ThemeContext } from "../../context/ThemeContext";
 import { sort } from "../dashboard/submain/SalesTrends";
 
-const Select = ({ className, style, list, setSortBy }) => {
+const Select = ({ className, style, list, setSortBy, sortBy }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -13,7 +13,7 @@ const Select = ({ className, style, list, setSortBy }) => {
         className="select-box__current flex items-center justify-center"
         tabIndex="1"
       >
-        {list.slice(0).map((item, index) => {
+        {list.map((item, index) => {
           return (
             <div className="select-box__valu" key={item.id ? item.id : index}>
               <input
@@ -33,17 +33,16 @@ const Select = ({ className, style, list, setSortBy }) => {
                     case "monthly":
                       setSortBy(sort.monthly);
                       break;
-                    case "yealy":
-                      setSortBy(sort.yealy);
+                    case "yearly":
+                      setSortBy(sort.yearly);
                       break;
 
                     default:
                       setSortBy(sort.daily);
                       break;
                   }
-                  setSortBy();
                 }}
-                checked={index === 0}
+                checked={sort[item.value] === sortBy}
               />
               <p className="select-box__input-text">{item.text}</p>
             </div>

@@ -149,6 +149,10 @@ const Header = ({ tabOpen, setTab }) => {
             <button
               onClick={() => {
                 setMore(!more);
+
+                setTimeout(() => {
+                  setMore(false);
+                }, 5000);
               }}
               className="profile-btn p-[0.38rem] rounded-[2.375rem]"
               style={{

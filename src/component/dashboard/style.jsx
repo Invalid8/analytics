@@ -43,7 +43,7 @@ export const Iconic = styled.button`
 
     position: relative;
   }
-
+  /* 
   &.straight:after {
     position: absolute;
     content: "";
@@ -53,14 +53,44 @@ export const Iconic = styled.button`
     min-height: 1px;
     border-radius: 50%;
     width: 100%;
-  }
+  } */
 
-  &.straight.active:after {
+  /* &.straight.active:after {
     transition: 0.3s ease-in;
     transition-property: width background-color;
     width: 100%;
     background-color: #34caa5;
     box-shadow: 0 0 1.5px #fff;
+  } */
+
+  & {
+    position: relative;
+  }
+
+  & .tab {
+    width: 0.19rem;
+    height: 1.3rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(100%, -50%);
+
+    background-color: #0d062d;
+    right: -1.45rem;
+    border-radius: 40px;
+  }
+
+  .dark & .tab {
+    background-color: #351aa7;
+  }
+
+  &.active .tab,
+  &:hover .tab {
+    transition: 0.2s all ease-in;
+    transform: translate(0, -50%);
+  }
+
+  &.straight .tab {
+    right: -1.9rem;
   }
 
   /* &.straight.active svg {
@@ -233,7 +263,7 @@ export const Table = styled.div`
   }
 
   &.sub .status .refund {
-    color: var(--Alerts-Error, #ed544e);
+    color: #ed544e;
   }
 `;
 

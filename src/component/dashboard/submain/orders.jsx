@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { Table, Title } from "../style";
+import Invoice from "../mini/Invoice";
 
 export default function Orders() {
   const { theme } = useContext(ThemeContext);
+  const [invoice, setInvoice] = useState(null);
+
   return (
     <div
       className="bg-[#FFF] rounded-[0.875rem] p-[1.25rem] flex flex-col gap-[1.25rem] w-full h-fit max-w-full min-w-full dark:bg-[#1c1919] dark:text-[#fff]"
@@ -29,16 +32,28 @@ export default function Orders() {
           </Table>
           <div className="bud w-full">
             {data.map((order) => {
-              return <Order order={order} key={order.id} />;
+              return (
+                <Order order={order} setInvoice={setInvoice} key={order.id} />
+              );
             })}
           </div>
         </div>
       </div>
+      {invoice && (
+        <div
+          className="veil fixed top-0 buttom-0 left-0 right-0 bg-[#0000003a] w-full h-full grid place-content-center z-[10000]"
+          onClick={() => {
+            setInvoice(null);
+          }}
+        >
+          <Invoice invoice={invoice} />
+        </div>
+      )}
     </div>
   );
 }
 
-const Order = ({ order }) => {
+const Order = ({ order, setInvoice }) => {
   const { theme } = useContext(ThemeContext);
   return (
     <Table className="row sub w-full">
@@ -62,7 +77,10 @@ const Order = ({ order }) => {
         )}
       </div>
       <div className="invoice">
-        <button className="view flex gap-[0.25rem] items-center">
+        <button
+          className="view flex gap-[0.25rem] items-center"
+          onClick={() => setInvoice(order)}
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
