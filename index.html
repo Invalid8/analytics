@@ -9,12 +9,17 @@
     <title>Turbo Anlaytics</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       console.log(localStorage.getItem("theme"))
-      if (localStorage.getItem("theme") === 'light') {
-        document.documentElement.className = 'light'
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+
+        document.documentElement.classList.add("dark")
       } else {
-        document.documentElement.className = 'dark'
+        document.documentElement.classList.remove("dark")
       }
     </script>
   </head>

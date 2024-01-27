@@ -23,13 +23,54 @@ export const Bud = styled.div`
 
 export const Iconic = styled.button`
   & {
+    flex-shrink: 0;
+    display: flex;
+    gap: 0.55rem;
+  }
+
+  &:not(.straight) {
     width: 2.5rem;
     height: 2.5rem;
-    flex-shrink: 0;
 
     display: grid;
     place-content: center;
     place-items: center;
+  }
+
+  &.straight {
+    height: 2.5rem;
+    align-items: center;
+
+    position: relative;
+  }
+
+  &.straight:after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    height: 1px;
+    max-height: 1px;
+    min-height: 1px;
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  &.straight.active:after {
+    transition: 0.3s ease-in;
+    transition-property: width background-color;
+    width: 100%;
+    background-color: #34caa5;
+    box-shadow: 0 0 1.5px #fff;
+  }
+
+  /* &.straight.active svg {
+    border: 2px solid #34caa5;
+    border-radius: 50%;
+    padding: 1.2px;
+  } */
+
+  &[title]:hover:after {
+    background-color: #34caa5;
   }
 
   & svg {
@@ -93,6 +134,16 @@ export const Sync = styled.div`
       border: none !important;
       display: flex;
       gap: 0.5rem;
+    }
+
+    & .inner-t {
+      position: relative;
+      width: 100%;
+      top: 0;
+      background-color: transparent !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
   }
 

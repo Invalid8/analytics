@@ -17,7 +17,7 @@ const Grut = styled.div`
   & {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     gap: 1.25rem;
     place-content: center;
     place-items: center;
@@ -42,14 +42,14 @@ const Graph = ({ gp }) => {
     <div
       className="graph-box bg-[#FFF] rounded-[0.875rem] w-full min-w-[280px] max-w-[360px] p-[1rem] flex flex-col gap-1 dark:bg-[#1c1919] dark:text-[#fff]"
       style={{
-        border: `1px solid ${theme === "light" ? "#edf2f7" : "#332e2e"}`,
+        border: `1px solid ${theme !== "dark" ? "#edf2f7" : "#332e2e"}`,
       }}
     >
       <div className="s1 flex justify-between items-center">
         <div
           className="icon rounded-full w-[2.5rem] h-[2.5rem] grid place-content-center place-items-center"
           style={{
-            border: `1px solid ${theme === "light" ? "#edf2f7" : "#332e2e"}`,
+            border: `1px solid ${theme !== "dark" ? "#edf2f7" : "#332e2e"}`,
           }}
         >
           <img src={gp.icon} alt="..." />

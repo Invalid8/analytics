@@ -87,6 +87,8 @@ const Sales = () => {
               8500, 19000, 3000, 28000, 9000, 45000, 9000, 23000, 32000, 4900,
               30000, 25000,
             ],
+
+            roundCap: true,
             itemStyle: {
               emphasis: {
                 barBorderRadius: [50, 50],
@@ -113,7 +115,7 @@ const Sales = () => {
     <div
       className="bg-[#FFF] rounded-[0.875rem] p-[1.53rem] w-full min-w-[280px] max-w-full flex-wrap dark:bg-[#1c1919] dark:text-[#fff]"
       style={{
-        border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
+        border: `1px solid ${theme !== "dark" ? "#E1DFDF" : "#332e2e"}`,
       }}
     >
       <div className="title flex justify-between items-center gap-2 flex-wrap w-full">
@@ -124,7 +126,7 @@ const Sales = () => {
             className="option w-[6rem] bg-[#fff] dark:bg-[#1c1919]"
             style={{
               borderRadius: "1.25rem",
-              border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
+              border: `1px solid ${theme !== "dark" ? "#E1DFDF" : "#332e2e"}`,
               overflow: "hidden",
             }}
           >
@@ -158,7 +160,7 @@ const Sales = () => {
       </div>
       <div className="bud w-full h-full custom-scroll-bar overflow-auto">
         <div
-          className="main w-full h-full min-w-[360px] min-h-[300px] max-h-[17rem]"
+          className="main w-full h-[22rem] min-w-[360px] min-h-[300px] max-h-[22rem]"
           id="chart"
           ref={chart}
         ></div>

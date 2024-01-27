@@ -9,7 +9,7 @@ export default function Platform() {
     <div
       className="bg-[#FFF] rounded-[0.875rem] p-[1.25rem] flex flex-col gap-[1.25rem] w-full h-full dark:bg-[#1c1919] dark:text-[#fff]"
       style={{
-        border: `1px solid ${theme === "light" ? "#E1DFDF" : "#332e2e"}`,
+        border: `1px solid ${theme !== "dark" ? "#E1DFDF" : "#332e2e"}`,
       }}
     >
       <div className="heading flex justify-between">
