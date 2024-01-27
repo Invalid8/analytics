@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { Iconic } from "../../style";
-import { ThemeContext } from "../../../../context/ThemeContext";
+import { Iconic } from "../style";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const ThemeBtn = ({ full }) => {
   const { toggleTheme, theme } = useContext(ThemeContext);

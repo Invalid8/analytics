@@ -2,8 +2,9 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "../../context/ThemeContext";
+import { sort } from "../dashboard/submain/SalesTrends";
 
-const Select = ({ className, style, list }) => {
+const Select = ({ className, style, list, setSortBy }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -12,30 +13,37 @@ const Select = ({ className, style, list }) => {
         className="select-box__current flex items-center justify-center"
         tabIndex="1"
       >
-        <div className="select-box__value">
-          <input
-            className="select-box__input"
-            type="radio"
-            id={list[0].id}
-            value={list[0].id}
-            name="Ben"
-            checked="checked"
-            onChange={() => {}}
-          />
-          <p className="select-box__input-text">{list[0].text}</p>
-        </div>
-        {list.slice(1).map((item, index) => {
+        {list.slice(0).map((item, index) => {
           return (
-            <div
-              className="select-box__value bg-black"
-              key={item.id ? item.id : index}
-            >
+            <div className="select-box__valu" key={item.id ? item.id : index}>
               <input
                 className="select-box__input"
                 type="radio"
-                id={item.id}
-                value={item.id}
+                id={item.value}
+                value={item.value}
                 name="Ben"
+                onChange={() => {
+                  switch (item.value) {
+                    case "daily":
+                      setSortBy(sort.daily);
+                      break;
+                    case "weekly":
+                      setSortBy(sort.weekly);
+                      break;
+                    case "monthly":
+                      setSortBy(sort.monthly);
+                      break;
+                    case "yealy":
+                      setSortBy(sort.yealy);
+                      break;
+
+                    default:
+                      setSortBy(sort.daily);
+                      break;
+                  }
+                  setSortBy();
+                }}
+                checked={index === 0}
               />
               <p className="select-box__input-text">{item.text}</p>
             </div>
@@ -66,7 +74,7 @@ const Select = ({ className, style, list }) => {
             <li key={item.id ? item.id : index}>
               <label
                 className="select-box__option bg-[#fff] hover:dark:bg-[#171515] hover:dark:text-[#fff]"
-                htmlFor={item.id}
+                htmlFor={item.value}
                 aria-hidden="aria-hidden"
               >
                 {item.text}

@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef } from "react";
 import { Iconic } from "./style";
 import { ThemeContext } from "../../context/ThemeContext";
 import styled from "styled-components";
-import { ThemeBtn } from "./submain/mini";
+import { ThemeBtn } from "./mini";
 
 const Navigator = ({ tabOpen, setTab, full, setFull }) => {
   const { theme } = useContext(ThemeContext);

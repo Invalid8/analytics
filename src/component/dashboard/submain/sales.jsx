@@ -3,13 +3,16 @@ import { TooltipComponent, GridComponent } from "echarts/components";
 import { BarChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { Select } from "../../outcasts";
 import { Title } from "../style";
+import { sort } from "./SalesTrends";
 
 const Sales = () => {
   const { theme } = useContext(ThemeContext);
+  const [sortBy, setSortBy] = useState(sort.monthly);
+
   echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
   var chart = useRef();
 
@@ -54,20 +57,7 @@ const Sales = () => {
         xAxis: [
           {
             type: "category",
-            data: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "Mei",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Okt",
-              "Nov",
-              "Des",
-            ],
+            data: sortBy,
             axisTick: {
               alignWithLabel: true,
             },
@@ -80,7 +70,7 @@ const Sales = () => {
         ],
         series: [
           {
-            name: "Direct",
+            name: "Sale",
             type: "bar",
             barWidth: "60%",
             data: [
@@ -109,7 +99,7 @@ const Sales = () => {
         }
       });
     }
-  }, [chart]);
+  }, [chart, sortBy]);
 
   return (
     <div
@@ -132,6 +122,7 @@ const Sales = () => {
           >
             <Select
               className="k bg-[#fff] dark:bg-[#1c1919]"
+              setSortBy={setSortBy}
               list={[
                 {
                   id: 1,
