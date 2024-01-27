@@ -42,7 +42,7 @@ export default function Orders() {
       {invoice && (
         <div
           className="veil fixed top-0 buttom-0 left-0 right-0 bg-[#0000003a] w-full h-full grid place-content-center z-[10000]"
-          onClick={() => {
+          onDoubleClick={() => {
             setInvoice(null);
           }}
         >

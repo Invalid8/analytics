@@ -77,6 +77,7 @@ export const Iconic = styled.button`
     background-color: #0d062d;
     right: -1.45rem;
     border-radius: 40px;
+    opacity: 0;
   }
 
   .dark & .tab {
@@ -85,6 +86,7 @@ export const Iconic = styled.button`
 
   &.active .tab,
   &:hover .tab {
+    opacity: 1;
     transition: 0.2s all ease-in;
     transform: translate(0, -50%);
   }
