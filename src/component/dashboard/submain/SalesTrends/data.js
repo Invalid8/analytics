@@ -19,7 +19,6 @@ const sort = {
     "Nov",
     "Des",
   ],
-
   yealy: [
     "Jan",
     "Feb",
